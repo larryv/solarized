@@ -656,10 +656,19 @@ exe "hi! DiffText"       .s:fmt_none   .s:fg_blue   .s:bg_base02 .s:sp_blue
 endif
 exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0
 exe "hi! Conceal"        .s:fmt_none   .s:fg_blue   .s:bg_none
+    " Is there a way to actually test whether undercurl works, instead
+    " of using GUI-ness as a heuristic?
+    if has("gui_running")
 exe "hi! SpellBad"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_red
 exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
 exe "hi! SpellRare"      .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_cyan
 exe "hi! SpellLocal"     .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_yellow
+    else
+exe "hi! SpellBad"       .s:fmt_undr   .s:fg_none   .s:bg_none    .s:sp_red
+exe "hi! SpellCap"       .s:fmt_undr   .s:fg_none   .s:bg_none    .s:sp_violet
+exe "hi! SpellRare"      .s:fmt_undr   .s:fg_none   .s:bg_none    .s:sp_cyan
+exe "hi! SpellLocal"     .s:fmt_undr   .s:fg_none   .s:bg_none    .s:sp_yellow
+    endif
 exe "hi! Pmenu"          .s:fmt_none   .s:fg_base0  .s:bg_base02  .s:fmt_revbb
 exe "hi! PmenuSel"       .s:fmt_none   .s:fg_base01 .s:bg_base2   .s:fmt_revbb
 exe "hi! PmenuSbar"      .s:fmt_none   .s:fg_base2  .s:bg_base0   .s:fmt_revbb
